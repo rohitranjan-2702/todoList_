@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="box" id="heading">
+        <h1><%= listTitle %></h1>
+    </div>
+    
+    <div class="box">
+
+     <% newListItems.forEach(function(item){ %>
+
+        <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+                <p><%= item.name %></p>
+            </div>
+            <input type="hidden" name="listName" value="<%= listTitle %>"> </input>
+        </form>
+            <%     })     %>
+     
+        <!-- NOt using the traditional for-loop -->
+            <!-- <% for (var i=0; i<newListItems.length; i++){ %> -->         
+           <!-- <% } %>   -->
+           <form action="/" method="post">
+            <input type="text" name="newTask" placeholder="New Item" id="" autocomplete="off">
+            <button type="submit" name="list" value="<%= listTitle %>">+</button>
+        </form>
+        
+    </div>
+
+    <footer>
+        <p>Code and Designed by <a href="https://twitter.com/rohit_ranjan27">RoHiT</a></p>
+    </footer>
+
+</body>
+</html>
